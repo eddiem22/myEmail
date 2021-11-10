@@ -1,0 +1,29 @@
+{
+  "name": "myemail",
+  "version": "1.0.0",
+  "description": "A light and simple email application with a user friendly GUI.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eddiem22/myEmail.git"
+  },
+  "keywords": [
+    "email",
+    "client",
+    "electron",
+    "nodejs",
+    "sqlite"
+  ],
+  "author": "Eduard Marcencov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eddiem22/myEmail/issues"
+  },
+  "homepage": "https://github.com/eddiem22/myEmail#readme",
+  "dependencies": {
+    "electron": "^15.3.1"
+  }
+}
