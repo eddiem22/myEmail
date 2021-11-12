@@ -5,7 +5,7 @@ const createWindow = () => {
 	width: 1280,
 	height: 720,
   })
-  
+
   win.loadFile('index.html')
   win.webContents.on('new-window', (e, url) => {
     e.preventDefault()
