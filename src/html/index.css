@@ -2,15 +2,16 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Poppins";
+  font-family: "Comic Sans";
 }
 
 h2 {
   font-size: 2rem;
+  text-align: center;
 }
 
 .input-wrapper {
-  display: -ms-flexbox; /* IE10 */
+  display: -ms-flexbox; 
   display: flex;
   width: 100%;
   margin-bottom: 15px;
@@ -50,13 +51,6 @@ h2 {
   border: 2px solid #333333;
 }
 
-.attachment-wrapper {
-  margin: 15px 0;
-}
-
-.attachment-wrapper label {
-  font-weight: 600;
-}
 
 .send-btn {
   background-color: #333333;
