@@ -8,7 +8,7 @@ This application is a relatively small and completely doable project that would 
 ************************************************
 1. NPM INSTALL
 2. NPM INSTALL ELECTRON
-3.NPM INSTALL NODEMAILER
+3. NPM INSTALL NODEMAILER
 4. NPM INSTALL EXPRESS
 ************************************************
 
