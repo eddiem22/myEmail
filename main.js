@@ -56,7 +56,7 @@ app.on('ready', async () => {
     }
   })
 
-//marchinthecov@yahoo.com
+
 ipcMain.on('send_email',  async function (event, recipient, subject, message) {
   console.log(recipient, subject, message)
   let window = BrowserWindow.getAllWindows()[0]
