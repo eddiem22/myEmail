@@ -14,16 +14,4 @@ var form =  document.getElementById('ipcForm')
         //console.log(inputs);
         ipcRenderer.send('send_email', myRecipient, mySubject, myMessage)
        })
-    
-       
-       
-       /*
-    document.querySelector('#ipcForm').addEventListener('submit', () => {
-        sendForm();
-    });
-
-    document.querySelector('#sendbutton').addEventListener('click', () => {
-        sendForm();
-    });
-    
-*/
+  
