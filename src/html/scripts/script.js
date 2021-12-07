@@ -7,9 +7,9 @@ var form =  document.getElementById('ipcForm')
        var myRecipient = document.getElementById('email').value
        var mySubject = document.getElementById('subject').value
        var myMessage = document.getElementById('message').value
-       console.log(myRecipient)
-       console.log(mySubject)
-       console.log(myMessage)
+       //console.log(myRecipient)
+       //console.log(mySubject)
+       //console.log(myMessage)
        
         //console.log(inputs);
         ipcRenderer.send('send_email', myRecipient, mySubject, myMessage)
