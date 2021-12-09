@@ -11,16 +11,29 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <title>e-Mail Sender Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    <title></title>
   </head>
+
+
+<div class="contain">
+  <div class="wrapper">
+    <div class="aboutMe">
+      <h3>e-Mail Sender Application</h3>
+      <ul>
+        <li>Eduard Marcencov</li>
+        <li>CSC 190</li>
+        <li>emarcencov1@pride.hofstra.edu</li>
+      </ul>
+    </div>
   <body>
     <form id = "ipcForm" onSubmit="JavaScript:sendForm(event)" 
-    style="max-width: 600px; margin: auto"  
+   
     >
-      <h2>Disposable Email Sender</h2>
+      <h3>Disposable Email Sender</h2>
+
       <div class="input-wrapper">
         <i class="fa fa-user icon"></i>
-
         <input
           id = "email"
           class="input-field"
@@ -31,9 +44,48 @@
           required
         />
       </div>
+
+      <div class="input-wrapper">
+        <i class="fa fa-user icon"></i>
+      <input
+      id = "sender"
+      class="input-field"
+      type="text"
+      placeholder="Enter Your Email Address"
+      name="sender"    
+      autocomplete="off"
+      required
+    />
+  </div>
+
+  <div class="input-wrapper">
+    <i class="fa fa-key icon"></i>
+    <input
+    id = "password"
+    class="input-field"
+    type="text"
+    placeholder="Enter Password:"
+    name="password"    
+    autocomplete="off"
+    required
+  />
+</div>
+
+<div class="input-wrapper">
+  <i class="fa fa-envelope icon"></i>
+  <input
+  id = "smtpHost"
+  class="input-field"
+  type="text"
+  placeholder="Enter SMTP Host (example: smtp.yahoo.com):"
+  name="smtpHost"    
+  autocomplete="off"
+  required
+/>
+</div>
+
       <div class="input-wrapper">
         <i class="fa fa-envelope icon"></i>
-
         <input
           id = "subject"
           class="input-field"
@@ -49,13 +101,16 @@
           id="message"
           name="message"
           placeholder="Message body.."
-          style="height: 350px; width: 100%"
+          style="height: 250px; width: 100%"
           required
         ></textarea>
       </div>
+
       <button type="submit" class="send-btn" id = "sendbutton">Send Mail</button>
     </form>
+  </div>
+</div>
+</div>
     <script src = "./scripts/script.js"></script>
-    <script src="javascript/jquery-1.6.1.js"></script>
   </body>
 </html>
