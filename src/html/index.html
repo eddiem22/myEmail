@@ -27,10 +27,13 @@
       </ul>
     </div>
   <body>
-    <form id = "ipcForm" onSubmit="JavaScript:sendForm(event)" 
-   
-    >
+    <form id = "ipcForm">
       <h3>Disposable Email Sender</h2>
+
+        <label for="autofill">
+        <input type="checkbox" id="autofill" name="autofill" value = "yes">
+        Autofill?</label><br>
+       
 
       <div class="input-wrapper">
         <i class="fa fa-user icon"></i>
@@ -40,7 +43,7 @@
           type="text"
           placeholder="To:"
           name="email"    
-          autocomplete="off"
+        
           required
         />
       </div>
@@ -53,7 +56,7 @@
       type="text"
       placeholder="Enter Your Email Address"
       name="sender"    
-      autocomplete="off"
+    
       required
     />
   </div>
@@ -66,7 +69,7 @@
     type="text"
     placeholder="Enter Password:"
     name="password"    
-    autocomplete="off"
+  
     required
   />
 </div>
@@ -79,7 +82,7 @@
   type="text"
   placeholder="Enter SMTP Host (example: smtp.yahoo.com):"
   name="smtpHost"    
-  autocomplete="off"
+
   required
 />
 </div>
@@ -105,12 +108,15 @@
           required
         ></textarea>
       </div>
-
+      <label for="save">
+        <input type="checkbox" id="save" name="save" value = "yes">
+       Save Credidentials?</label>
       <button type="submit" class="send-btn" id = "sendbutton">Send Mail</button>
     </form>
   </div>
 </div>
 </div>
     <script src = "./scripts/script.js"></script>
+    <script src = "./scripts/info.js"></script>
   </body>
 </html>
