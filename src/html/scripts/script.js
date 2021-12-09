@@ -9,12 +9,12 @@ var myEmail = document.getElementById('sender');
 autofill.addEventListener('change', async function(event){
     if(autofill.checked)
     {
-        console.log('checked')
+        //console.log('checked')
         
         ipcRenderer.send('onCheck')
         ipcRenderer.on('onErrorCheck', function(event, arg){
             if(arg==true){
-                console.log('arg is true')
+                //console.log('arg is true')
                 ipcRenderer.on('onConfirm', function(event, smtp, email, password) {
                     myEmail.required = false;
                     myPassword.required = false;
@@ -29,7 +29,7 @@ autofill.addEventListener('change', async function(event){
             }
             else
             {
-                console.log('arg is false')
+                //console.log('arg is false')
                 myEmail.required = true;
                 myPassword.required = true;
                 myHost.required = true;
@@ -42,7 +42,7 @@ autofill.addEventListener('change', async function(event){
     }
     else
             {
-                console.log('NOT Schecked')
+               //console.log('NOT Schecked')
                 myEmail.required = true;
                 myPassword.required = true;
                 myHost.required = true;
@@ -71,13 +71,14 @@ form.addEventListener('submit', async function(event) {
        {   
            ipcRenderer.send('getAutofillInfo', myEmail, myPassword, myHost)
        }
+        /*
        console.log(myRecipient)
        console.log(mySubject)
        console.log(myMessage)
        console.log(myEmail)
        console.log(myPassword)
        console.log(myHost)
-       
+       */
         //console.log(inputs);
         ipcRenderer.send('send_email', myRecipient, mySubject, myMessage, myEmail, myPassword, myHost)
        })
