@@ -56,13 +56,12 @@ app.on('ready', async () => {
     }
   })
 
-
-ipcMain.on('send_email',  async function (event, recipient, subject, message) {
-  console.log(recipient, subject, message)
+ipcMain.on('send_email',  async function (event, recipient, subject, message, email, password, host) {
+  console.log(recipient, subject, message, email, password, host)
   let window = BrowserWindow.getAllWindows()[0]
   let errorStatus = false
         try{
-          await sendMail(subject, recipient, message) 
+          await sendMail(subject, recipient, message, email, password, host) 
         }
         catch(err){
               //console.log('message: error occured');
