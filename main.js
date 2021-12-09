@@ -8,6 +8,7 @@ const os = require('os');
 const render= require('./src/html/scripts/render');
 const sendMail = require('./src/helpers/nodeMailer');
 const webPagePath = path.join(__dirname, '/src/html');
+const {getCreds, fillCreds} = require('./src/autofill/getList');
 
 
 Express.listen(PORT, () => {
@@ -27,12 +28,12 @@ Express.use(express.static(htmlpath + 'index.html'));
 
 const createWindow = (webPage) => {
   const win = new BrowserWindow({
-	width: 1280,
-	height: 720,
+	width: 1600,
+	height: 850,
   webPreferences: {
-    nodeIntegration: true, // is default value after Electron v5
-      contextIsolation: false, // protect against prototype pollution
-      enableRemoteModule: true, // turn off remote
+    nodeIntegration: true, 
+      contextIsolation: false, 
+      enableRemoteModule: true, 
   }
   })
 
@@ -42,19 +43,54 @@ const createWindow = (webPage) => {
 
 app.on('ready', async () => {
   createWindow('index.html');
-})
+});
 
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
       app.quit()
     }
-  })
+  });
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow('index.html')
     }
-  })
+  });
+
+  ipcMain.on('getAutofillInfo', async function (event, myEmail, myPassword, myHost) {
+    fillCreds(myEmail, myPassword, myHost)
+    //console.log(getCreds())
+    console.log(`auto fill working, ${myEmail}, ${myPassword}, ${myHost}`)
+  });
+
+  ipcMain.on('onCheck', function(event, arg){
+    let autofill = true;
+    var creds = getCreds();
+    console.log(creds)
+    //try
+    //{
+      if(creds == 'EMPTY') 
+      {autofill = false; console.log('nothing to be autofilled'); event.sender.send('onErrorCheck', false);}
+      else{
+      let smtp = creds[0];
+      let email = creds[1];
+      let password = creds[2];
+      console.log(`autofill test ${smtp}, ${email} ,${password}`)   
+      event.sender.send('onErrorCheck', true)
+event.sender.send('onConfirm', smtp, email, password)
+      
+      }
+  
+    //}
+   // catch(err) {
+      
+   
+
+    //if(autofill) {
+      
+  //}
+    //else{console.log('autofill log is empty');}
+  });
 
 ipcMain.on('send_email',  async function (event, recipient, subject, message, email, password, host) {
   console.log(recipient, subject, message, email, password, host)
