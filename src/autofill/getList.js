@@ -21,7 +21,10 @@ const fillCreds = function(email, password, host) {
     file.email = `${email}`;
     file.password = `${password}`;
     file.smtp = `${host}`;
-    console.log('filled')
+    fs.writeFile(data, JSON.stringify(file ), (error) => {
+        if (error) throw error;
+      })
+    console.log('filled autofill json file')
     console.log(file.email, file.password, file.smtp);
 //}
 //catch(error){return `error editing autofill json`}
