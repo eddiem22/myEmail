@@ -1,6 +1,7 @@
 const { ipcRenderer } = require('electron')
 
 var form =  document.getElementById('ipcForm')
+form.addEventListener('submit', async function(event) {
        //console.log('FORM SCRIPT IS ACTIVE')
         //event.preventDefault()
        var myRecipient = document.getElementById('email').value
