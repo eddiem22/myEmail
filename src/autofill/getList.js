@@ -9,7 +9,7 @@ let getCreds = function() {
     CredsList.push(file.email)
     CredsList.push(file.password)
     CredsList.push(file.smtp)
-    console.log(CredsList)
+    //console.log(CredsList)
 
     if(!CredsList)
     {return 'EMPTY'}
@@ -25,7 +25,7 @@ const fillCreds = function(email, password, host) {
         if (error) throw error;
       })
     console.log('filled autofill json file')
-    console.log(file.email, file.password, file.smtp);
+    //console.log(file.email, file.password, file.smtp);
 //}
 //catch(error){return `error editing autofill json`}
 }
