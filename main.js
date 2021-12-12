@@ -1,7 +1,4 @@
 const { app, BrowserWindow, ipcMain, remote, net, ipcRenderer} = require('electron');
-const express = require("express");
-const Express = express();
-const PORT = 9898;
 const path = require ('path');
 const fs = require('fs');
 const os = require('os');
@@ -14,17 +11,6 @@ const {getCreds, fillCreds} = require('./src/autofill/getList');
 Express.listen(PORT, () => {
   console.log(`Server is chilling at ${PORT}`);
 });
-
-/*
-Express.use(express.json());
-
-Express.use(express.urlencoded({ extended: true}));
-
-const htmlpath = path.resolve(__dirname, './src/html');
-
-Express.use(express.static(htmlpath + 'index.html'));
-*/
-
 
 const createWindow = (webPage) => {
   const win = new BrowserWindow({
@@ -80,16 +66,6 @@ app.on('ready', async () => {
 event.sender.send('onConfirm', smtp, email, password)
       
       }
-  
-    //}
-   // catch(err) {
-      
-   
-
-    //if(autofill) {
-      
-  //}
-    //else{console.log('autofill log is empty');}
   });
 
 ipcMain.on('send_email',  async function (event, recipient, subject, message, email, password, host) {
@@ -109,8 +85,6 @@ ipcMain.on('send_email',  async function (event, recipient, subject, message, em
                  event.sender.send('onFailure', err)
                })
                 window.reload();
-
-              //return false;
             }
              if(!errorStatus){console.log('message: email has been sent'); createWindow('success.html'); window.close();}
         });
