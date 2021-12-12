@@ -40,8 +40,6 @@ app.on('ready', async () => {
 
   ipcMain.on('getAutofillInfo', async function (event, myEmail, myPassword, myHost) {
     fillCreds(myEmail, myPassword, myHost)
-    //console.log(getCreds())
-    //console.log(`auto fill working, ${myEmail}, ${myPassword}, ${myHost}`)
   });
 
   ipcMain.on('onCheck', function(event, arg){
