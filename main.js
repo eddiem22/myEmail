@@ -7,11 +7,6 @@ const sendMail = require('./src/helpers/nodeMailer');
 const webPagePath = path.join(__dirname, '/src/html');
 const {getCreds, fillCreds} = require('./src/autofill/getList');
 
-
-Express.listen(PORT, () => {
-  console.log(`Server is chilling at ${PORT}`);
-});
-
 const createWindow = (webPage) => {
   const win = new BrowserWindow({
 	width: 1600,
@@ -76,7 +71,6 @@ ipcMain.on('send_email',  async function (event, recipient, subject, message, em
           await sendMail(subject, recipient, message, email, password, host) 
         }
         catch(err){
-              //console.log('message: error occured');
               errorStatus = true
               console.log(`ERROR OCCURRED: ${err}`)
                createWindow('failure.html')
