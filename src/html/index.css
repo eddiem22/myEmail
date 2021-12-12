@@ -143,7 +143,6 @@ body {
 
 .contain {
   max-width: 1366px;
-  max-height: 768px;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -152,5 +151,5 @@ body {
 .aboutMe {
   background: #4b5195;
   color: #fff;
-  max-height: 768px;
+  max-height: 830px;
 }
