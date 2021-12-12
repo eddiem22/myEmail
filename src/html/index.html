@@ -30,11 +30,13 @@
     <form id = "ipcForm">
       <h3>Disposable Email Sender</h2>
 
-        <label for="autofill">
+        <label for="autofill" style="text-align: center;">
         <input type="checkbox" id="autofill" name="autofill" value = "yes">
         Autofill?</label><br>
+        <label for="save" style="text-align: center;">
+          <input type="checkbox" id="save" name="save" value = "yes">
+         Save Credidentials?</label>
        
-
       <div class="input-wrapper">
         <i class="fa fa-user icon"></i>
         <input
@@ -80,7 +82,7 @@
   id = "smtpHost"
   class="input-field"
   type="text"
-  placeholder="Enter SMTP Host (example: smtp.yahoo.com):"
+  placeholder="Enter SMTP Host (example: yahoo, gmail):"
   name="smtpHost"    
 
   required
@@ -108,10 +110,6 @@
           required
         ></textarea>
       </div>
-      <label for="save">
-        <input type="checkbox" id="save" name="save" value = "yes">
-       Save Credidentials?</label>
-      <button type="submit" class="send-btn" id = "sendbutton">Send Mail</button>
     </form>
   </div>
 </div>
