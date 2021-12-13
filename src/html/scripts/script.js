@@ -1,57 +1,79 @@
 const { ipcRenderer } = require('electron');
 
+var saveThis = document.getElementById('save');
+var myRecipient = document.getElementById('email').value
+var mySubject = document.getElementById('subject').value
+var myMessage = document.getElementById('message').value
+var myEmail = document.getElementById('sender').value
+var myPassword = document.getElementById('password').value
+var myHost = document.getElementById('smtpHost').value
 var form =  document.getElementById('ipcForm');
 var autofill = document.getElementById('autofill');
 var myEmail = document.getElementById('sender');
-    var myPassword = document.getElementById('password');
-    var myHost = document.getElementById('smtpHost');
+var myPassword = document.getElementById('password');
+var myHost = document.getElementById('smtpHost');
+var saveThis = document.getElementById('save');
+
+class thisEmail {
+    constructor(subject, recipient, message, email, password, host, saved, autofilled) {
+        this.subject = subject;
+        this.recipient = recipient;
+        this.message = message;
+        this.email = email;
+        this.password = password;
+        this.host = host;
+        this.save = saved;
+        this.autofill = autofilled;
+    }
+}
+
+let emailObject = new thisEmail(mySubject, myRecipient, myMessage, myEmail, myPassword, myHost, saveThis, autofill)
+
 
 autofill.addEventListener('change', async function(event){
-    if(autofill.checked)
+    if(emailObject.saved.checked)
     {
-        //console.log('checked')
-        
         ipcRenderer.send('onCheck')
         ipcRenderer.on('onErrorCheck', function(event, arg){
             if(arg==true){
-                //console.log('arg is true')
+                console.log('arg is true')
                 ipcRenderer.on('onConfirm', function(event, smtp, email, password) {
-                    myEmail.required = false;
-                    myPassword.required = false;
-                    myHost.required = false;
-                    myPassword.placeholder = '**********'
-                    myHost.placeholder = `smtp.mail.${smtp}.com`
-                    myEmail.placeholder = `${email}`;
-                    myEmail.value = email;
-                    myPassword.value = password;
-                    myHost.value = smtp;
+                    emailObject.email.required = false;
+                    emailObject.password.required = false;
+                    emailObject.host.required = false;
+                    emailObject.password.placeholder = '**********'
+                    emailObject.host.placeholder = `smtp.mail.${smtp}.com`
+                    emailObject.email.placeholder = `${email}`;
+                    emailObject.email.value = email;
+                    emailObject.password.value = password;
+                    emailObject.host.value = smtp;
                 })
             }
             else
             {
-                //console.log('arg is false')
-                myEmail.required = true;
-                myPassword.required = true;
-                myHost.required = true;
-                myPassword.placeholder = 'Enter Password'
-                myHost.placeholder = `smtp.mail.YOURHOST.com`
-                myEmail.placeholder = 'Enter Your Email Address'
+                console.log('arg is false')
+                emailObject.email.required = true;
+                emailObject.password.required = true;
+                emailObject.host.required = true;
+                emailObject.password.placeholder = 'Enter Password'
+                emailObject.host.placeholder = `smtp.mail.YOURHOST.com`
+                emailObject.email.placeholder = 'Enter Your Email Address'
             }
         })
        
     }
     else
             {
-               //console.log('NOT Schecked')
-                myEmail.required = true;
-                myPassword.required = true;
-                myHost.required = true;
-                myPassword.placeholder = 'Enter Password'
-                myHost.placeholder = `smtp.mail.YOURHOST.com`
-                myEmail.placeholder = 'Enter Your Email Address'
-                myEmail.value = ''
-                myPassword.value = ''
-                myHost.value = ''
+                console.log('NOT Schecked')
+                emailObject.email.required = true;
+                emailObject.password.required = true;
+                emailObject.host.required = true;
+                emailObject.password.placeholder = 'Enter Password'
+                emailObject.host.placeholder = `smtp.mail.YOURHOST.com`
+                emailObject.email.placeholder = 'Enter Your Email Address'
+                emailObject.email.value = ''
+                emailObject.password.value = ''
+                emailObject.host.value = ''
             }
    
 
@@ -60,26 +82,19 @@ autofill.addEventListener('change', async function(event){
 form.addEventListener('submit', async function(event) {
        //console.log('FORM SCRIPT IS ACTIVE')
         //event.preventDefault(
-        var saveThis = document.getElementById('save');
-       var myRecipient = document.getElementById('email').value
-       var mySubject = document.getElementById('subject').value
-       var myMessage = document.getElementById('message').value
-       var myEmail = document.getElementById('sender').value
-       var myPassword = document.getElementById('password').value
-       var myHost = document.getElementById('smtpHost').value
-       if(saveThis.checked)
+       var myRecipientValue = emailObject.recipient.value
+       var mySubjectValue = emailObject.subject.value
+       var myMessageValue = emailObject.message.value
+       var myEmailValue = emailObject.email.value
+       var myPasswordValue = emailObject.password.value
+       var myHostValue = emailObject.host.value
+       if(emailObject.save.checked)
        {   
-           ipcRenderer.send('getAutofillInfo', myEmail, myPassword, myHost)
+           ipcRenderer.send('getAutofillInfo', myEmailValue, myPasswordValue, myHostValue)
        }
-        /*
-       console.log(myRecipient)
-       console.log(mySubject)
-       console.log(myMessage)
-       console.log(myEmail)
-       console.log(myPassword)
-       console.log(myHost)
-       */
+       console.log(emailObject)
+       
         //console.log(inputs);
-        ipcRenderer.send('send_email', myRecipient, mySubject, myMessage, myEmail, myPassword, myHost)
+        ipcRenderer.send('send_email', mySubjectValue, myRecipientValue, myMessageValue, myEmailValue, myPasswordValue, myHostValue )
        })
   
