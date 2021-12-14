@@ -1,12 +1,12 @@
 const { ipcRenderer } = require('electron');
 
 var saveThis = document.getElementById('save');
-var myRecipient = document.getElementById('email').value
-var mySubject = document.getElementById('subject').value
-var myMessage = document.getElementById('message').value
-var myEmail = document.getElementById('sender').value
-var myPassword = document.getElementById('password').value
-var myHost = document.getElementById('smtpHost').value
+var myRecipient = document.getElementById('email')
+var mySubject = document.getElementById('subject')
+var myMessage = document.getElementById('message')
+var myEmail = document.getElementById('sender')
+var myPassword = document.getElementById('password')
+var myHost = document.getElementById('smtpHost')
 var form =  document.getElementById('ipcForm');
 var autofill = document.getElementById('autofill');
 var myEmail = document.getElementById('sender');
