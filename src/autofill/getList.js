@@ -12,7 +12,7 @@ let getCreds = function() {
     //console.log(CredsList)
 
     if(!CredsList)
-    {return 'EMPTY'}
+    {return null}
     else{return CredsList;}
 }
 
