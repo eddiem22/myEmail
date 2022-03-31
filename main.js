@@ -48,7 +48,7 @@ app.on('ready', async () => {
     console.log(creds)
     //try
     //{
-      if(creds == 'EMPTY') 
+      if(creds) 
       {autofill = false; console.log('nothing to be autofilled'); event.sender.send('onErrorCheck', false);}
       else{
       let smtp = creds[0];
