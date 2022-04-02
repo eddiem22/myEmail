@@ -75,21 +75,14 @@ autofill.addEventListener('change', async function(event){
 })
 
 form.addEventListener('submit', async function(event) {
-       //console.log('FORM SCRIPT IS ACTIVE')
-        //event.preventDefault(
-       var myRecipientValue = emailObject.recipient.value
-       var mySubjectValue = emailObject.subject.value
-       var myMessageValue = emailObject.message.value
-       var myEmailValue = emailObject.email.value
-       var myPasswordValue = emailObject.password.value
-       var myHostValue = emailObject.host.value
+
        if(emailObject.save.checked)
        {   
-           ipcRenderer.send('getAutofillInfo', myEmailValue, myPasswordValue, myHostValue)
+           ipcRenderer.send('getAutofillInfo', emailObject.email.value, emailObject.password.value, emailObject.host.value)
        }
        console.log(emailObject)
        
         //console.log(inputs);
-        ipcRenderer.send('send_email', mySubjectValue, myRecipientValue, myMessageValue, myEmailValue, myPasswordValue, myHostValue )
+        ipcRenderer.send('send_email', mySubjectValue, emailObject.subject.value, emailObject.message.value, myEmailValue, myPasswordValue, myHostValue )
        })
   
