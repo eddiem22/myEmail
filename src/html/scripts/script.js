@@ -84,6 +84,7 @@ form.addEventListener('submit', async function(event) {
        console.log(emailObject)
        
         //console.log(inputs);
-        ipcRenderer.send('send_email', mySubjectValue, emailObject.subject.value, emailObject.message.value, myEmailValue, myPasswordValue, myHostValue )
-       })
+        ipcRenderer.send('send_email', mySubjectValue, emailObject.subject.value, emailObject.message.value, myEmailValue,emailObject.password.value , emailObject.host.value )
+
+})
   
