@@ -1,18 +1,6 @@
 const { ipcRenderer } = require('electron');
 
-var saveThis = document.getElementById('save');
-var myRecipient = document.getElementById('email')
-var mySubject = document.getElementById('subject')
-var myMessage = document.getElementById('message')
-var myEmail = document.getElementById('sender')
-var myPassword = document.getElementById('password')
-var myHost = document.getElementById('smtpHost')
 var form =  document.getElementById('ipcForm');
-var autofill = document.getElementById('autofill');
-var myEmail = document.getElementById('sender');
-var myPassword = document.getElementById('password');
-var myHost = document.getElementById('smtpHost');
-var saveThis = document.getElementById('save');
 
 class thisEmail {
     constructor(subject, recipient, message, email, password, host, saved, autofilled) {
@@ -27,7 +15,14 @@ class thisEmail {
     }
 }
 
-let emailObject = new thisEmail(mySubject, myRecipient, myMessage, myEmail, myPassword, myHost, saveThis, autofill)
+let emailObject = new thisEmail(mySubject, 
+    document.getElementById('subject'), 
+    document.getElementById('message'),
+    document.getElementById('email'), 
+    document.getElementById('password'), 
+    document.getElementById('smtpHost'), 
+    document.getElementById('save'), 
+    document.getElementById('autofill'))
 
 
 autofill.addEventListener('change', async function(event){
