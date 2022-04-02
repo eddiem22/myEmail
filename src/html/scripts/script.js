@@ -15,14 +15,15 @@ class thisEmail {
     }
 }
 
-let emailObject = new thisEmail(mySubject, 
-    document.getElementById('subject'), 
+let emailObject = new thisEmail(document.getElementById('subject'), 
+document.getElementById('sender'), 
     document.getElementById('message'),
     document.getElementById('email'), 
     document.getElementById('password'), 
     document.getElementById('smtpHost'), 
     document.getElementById('save'), 
-    document.getElementById('autofill'))
+    document.getElementById('autofill')
+    )
 
 
 autofill.addEventListener('change', async function(event){
