@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, remote, net, ipcRenderer} = require('electr
 const path = require ('path');
 const fs = require('fs');
 const os = require('os');
-const render= require('./src/html/scripts/render');
+//const render= require('./src/html/scripts/render');
 const sendMail = require('./src/helpers/nodeMailer');
 const webPagePath = path.join(__dirname, '/src/html');
 const {getCreds, fillCreds} = require('./src/autofill/getList');
@@ -48,7 +48,7 @@ app.on('ready', async () => {
     console.log(creds)
     //try
     //{
-      if(creds) 
+      if(!creds) 
       {autofill = false; console.log('nothing to be autofilled'); event.sender.send('onErrorCheck', false);}
       else{
       let smtp = creds[0];
