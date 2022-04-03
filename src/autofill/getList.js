@@ -1,19 +1,17 @@
 const path = require('path');
 fs = require('fs');
 const p = require('./readfile');
-let data = path.join(__dirname, 'autofill.json');
-let file = p.get(data);
+const data = path.join(__dirname, 'autofill.json');
+const file = p.get(data);
 
 let getCreds = function() {
     var CredsList = [];
     CredsList.push(file.email)
     CredsList.push(file.password)
     CredsList.push(file.smtp)
-    //console.log(CredsList)
+    console.log(CredsList)
 
-    if(!CredsList)
-    {return null}
-    else{return CredsList;}
+    return CredsList;
 }
 
 const fillCreds = function(email, password, host) {
